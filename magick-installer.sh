@@ -1,7 +1,7 @@
 #!/bin/sh
-set -e 
+set -e
 
-curl -O http://nongnu.askapache.com/freetype/freetype-2.3.9.tar.gz
+curl -O http://savory.googlecode.com/files/freetype-2.3.9.tar.gz
 tar xzvf freetype-2.3.9.tar.gz
 cd freetype-2.3.9
 ./configure --prefix=/usr/local
@@ -17,9 +17,9 @@ make
 sudo make install
 cd ..
 
-curl -O http://www.ijg.org/files/jpegsrc.v7.tar.gz
-tar xzvf jpegsrc.v7.tar.gz
-cd jpeg-7
+curl -O http://quirkysoft.googlecode.com/files/jpegsrc.v6b.tar.gz
+tar xzvf jpegsrc.v6b.tar.gz
+cd jpeg-6b
 ln -s `which glibtool` ./libtool
 export MACOSX_DEPLOYMENT_TARGET=10.5
 ./configure --enable-shared --prefix=/usr/local
@@ -54,7 +54,7 @@ cd ..
 curl -O http://voxel.dl.sourceforge.net/project/ghostscript/GPL%20Ghostscript/8.70/ghostscript-8.70.tar.gz
 tar zxvf ghostscript-8.70.tar.gz
 cd ghostscript-8.70/
-./configure  --prefix=/usr/local
+./configure  --prefix=/usr/local --with-libiconv=/opt/local/bin/iconv
 make
 sudo make install
 cd ..
@@ -63,12 +63,13 @@ curl -O http://voxel.dl.sourceforge.net/project/gs-fonts/gs-fonts/8.11%20%28base
 tar zxvf ghostscript-fonts-std-8.11.tar.gz
 sudo mv fonts /usr/local/share/ghostscript
 
-curl -O http://image_magick.veidrodis.com/image_magick/ImageMagick-6.5.6-1.tar.gz
-tar xzvf ImageMagick-6.5.6-1.tar.gz
-cd ImageMagick-6.5.6-1
+curl -O http://image_magick.veidrodis.com/image_magick/ImageMagick-6.4.8-7.tar.gz
+tar xzvf ImageMagick-6.4.8-7.tar.gz
+cd ImageMagick-6.4.8-7
 export CPPFLAGS=-I/usr/local/include
 export LDFLAGS=-L/usr/local/lib
 ./configure --prefix=/usr/local --disable-static --with-modules --without-perl --without-magick-plus-plus --with-quantum-depth=8 --with-gs-font-dir=/usr/local/share/ghostscript/fonts
 make
 sudo make install
 cd ..
+
