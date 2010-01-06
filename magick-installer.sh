@@ -1,7 +1,7 @@
 #!/bin/sh
-set -e
+set -e 
 
-curl -O http://savory.googlecode.com/files/freetype-2.3.9.tar.gz
+curl -O http://mirror.its.uidaho.edu/pub/savannah/freetype/freetype-2.3.9.tar.gz
 tar xzvf freetype-2.3.9.tar.gz
 cd freetype-2.3.9
 ./configure --prefix=/usr/local
